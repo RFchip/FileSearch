@@ -8,8 +8,8 @@ public class HeaderFiles {
 
 	public static void main(String[] args) throws IOException {
 		
-		final String FILESTYPE = "exe";
-
+		//final String FILESTYPE = "exe";
+		final String FILESTYPE = "apk";
 		// requested file path
 		String reqFilePath = null;
 		if (args.length < 2) {
