@@ -1,11 +1,11 @@
 FileSearch
 
-This application find all files and copy only files with specified suffix (type) of files.
+This application find all files and copy only files with specified suffix (type).
 
 Application reading file signature in hex and compare with specified template.
 
 In evaluational version, supported only "exe" and "apk" files.
-U will change type of files, changing constant FILESTYPE in HeaderFiles.java.
+U can change type of files, changing constant FILESTYPE in HeaderFiles.java.
 
 For testing - run HeaderFiles and specify two arguments, with space separated.
 Arguments:
