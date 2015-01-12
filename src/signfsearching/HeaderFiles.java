@@ -8,8 +8,8 @@ public class HeaderFiles {
 
 	public static void main(String[] args) throws IOException {
 
-		final String FILESTYPE = "exe";
-		// final String FILESTYPE = "apk";
+		//final String FILESTYPE = "exe";
+		final String FILESTYPE = "apk";
 		// requested file path
 		String reqFilePath = null;
 		if (args.length < 2) {
@@ -31,7 +31,12 @@ public class HeaderFiles {
 
 				reqFilePath = SearchFileSignature.searchSigFile(f, FILESTYPE);
 
-				if (reqFilePath == "-1") {
+				if (reqFilePath == "0") {
+					
+//					System.err
+//							.println("File signature is Right, but this file isn't APK-file");
+
+				} else if (reqFilePath == "-1") {
 
 					System.err.println("File doesn't exist!");
 
@@ -47,6 +52,8 @@ public class HeaderFiles {
 				}
 
 			}
+			
+			System.out.println("ALL is done!)");
 
 		}
 	}

@@ -5,12 +5,14 @@ import java.io.IOException;
 
 public class SearchFileSignature {
 
-	private static final Byte EAMPTY = -1;
-	private static final String Err1 = "-1"; // the flag of error
-												// -"File doesn't exist!"
-	private static final String Err2 = "-2"; // the flag of error
-												// -"File doesn't compare with suffix!"
-	private static Byte signature[] = { EAMPTY, EAMPTY, EAMPTY, EAMPTY };
+	private static final Byte EMPTY = -1;
+	private static final String ERR0 = "0";  // the flag of error -
+											 // "File signature is Right, but this file isn't APK-file"
+	private static final String ERR1 = "-1"; // the flag of error
+											 // -"File doesn't exist!"
+	private static final String ERR2 = "-2"; // the flag of error
+											 // -"File doesn't compare with suffix!"
+	private static Byte signature[] = { EMPTY, EMPTY, EMPTY, EMPTY };
 
 	public static void searchSignature(File file, String suffix)
 			throws IOException {
@@ -44,7 +46,7 @@ public class SearchFileSignature {
 		if (file.exists()) {
 			for (int i = 0; i < signature.length; i++) {
 				// System.out.println(FileReadByte.fReadByte(file, i));
-				if (signature[i] != EAMPTY) {
+				if (signature[i] != EMPTY) {
 					System.out.println(FileReadByte.fReadByte(file, i));
 					if (signature[i] == FileReadByte.fReadByte(file, i)) {
 						compareFlag = true;
@@ -99,7 +101,7 @@ public class SearchFileSignature {
 		if (file.exists()) {
 			for (int i = 0; i < signature.length; i++) {
 				// System.out.println(FileReadByte.fReadByte(file, i));
-				if (signature[i] != EAMPTY) {
+				if (signature[i] != EMPTY) {
 					// System.out.println(FileReadByte.fReadByte(file, i));
 					if (signature[i] == FileReadByte.fReadByte(file, i)) {
 						compareFlag = true;
@@ -113,16 +115,18 @@ public class SearchFileSignature {
 				// only for test!
 				// System.out.println("This is File " + suffix );
 
-				return file.getAbsolutePath();
+				if (ApkFilesChk.chk_include(file))
+					return file.getAbsolutePath();
+				return ERR0;
 			} else {
 				// System.err.println("This is NOT a  " + suffix + " File!");
-				return Err2;
+				return ERR2;
 			}
 
 			// FileReadByte.fReadByte(file);
 		} else {
 			// System.err.println("File doesn't exist!");
-			return Err1;
+			return ERR1;
 		}
 
 	}

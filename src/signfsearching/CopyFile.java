@@ -25,6 +25,7 @@ public class CopyFile {
 		File outDir = new File(outputPath);
 
 		if (!inFile.exists() || !inFile.canRead()) {
+			//System.out.println(inFile.getAbsolutePath());
 			System.err
 					.println("Input file doesn't exist or protected for reading!");
 			System.exit(1);
